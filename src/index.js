@@ -3,19 +3,25 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import prettier from "prettier";
 import { tsImport } from "tsx/esm/api";
-import type { Plugin } from "vite";
 
-export function renderTypescriptToHTMLPlugin(dir: string): Plugin {
+/**
+ * @param {string} dir 
+ * @returns {import("vite").Plugin}
+ */
+export function renderTypescriptToHTMLPlugin(dir) {
   const cwd = process.cwd();
   const entryDir = path.join(cwd, dir);
-  const prettierOptions: prettier.Options = {
+
+  /** @type {import("prettier").Options} */
+  const prettierOptions = {
     parser: "html",
     printWidth: 10_000,
     singleQuote: false,
     useTabs: true,
   };
 
-  const renderHtml = (input: string | (() => string)) => {
+  /** @param {string | (() => string)} input */
+  const renderHtml = (input) => {
     if (typeof input === "string") {
       return input;
     }
@@ -23,7 +29,12 @@ export function renderTypescriptToHTMLPlugin(dir: string): Plugin {
     return input();
   };
 
-  const isPage = (filePath: string) => {
+  /** @param {string | undefined} filePath */
+  const isPage = (filePath) => {
+    if (!filePath) {
+      return false;
+    }
+
     const relativePath = path.relative(entryDir, filePath);
     return relativePath.split("/").every((part) => !part.startsWith("_"));
   };
@@ -47,7 +58,7 @@ export function renderTypescriptToHTMLPlugin(dir: string): Plugin {
               path.join(entryDir, dir, name + ".html"),
             ];
           })
-          .filter(([_, filePath]) => isPage(filePath!)),
+          .filter(([_, filePath]) => isPage(filePath)),
       );
 
       if (!config.build) {
@@ -68,7 +79,7 @@ export function renderTypescriptToHTMLPlugin(dir: string): Plugin {
         let name = req.url || "/";
 
         if (name.includes("?")) {
-          name = name.split("?")[0]!;
+          name = name.split("?")[0] ?? "/";
         }
 
         name = name.slice(1);

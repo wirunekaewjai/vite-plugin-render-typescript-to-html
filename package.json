@@ -1,14 +1,16 @@
 {
   "name": "@wirunekaewjai/vite-plugin-render-typescript-to-html",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
-    "src/index.ts"
+    "src/index.js",
+    "src/types.ts"
   ],
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "main": "./src/index.js",
+  "types": "./src/types.ts",
   "exports": {
-    ".": "./src/index.ts",
+    ".": "./src/index.js",
+    "./types": "./src/types.ts",
     "./package.json": "./package.json"
   },
   "devDependencies": {
