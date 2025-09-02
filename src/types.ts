@@ -1,2 +1,1 @@
-// TBD
-export type { };
+export type renderTypescriptToHTMLPlugin = (dir: string) => import("vite").Plugin;
