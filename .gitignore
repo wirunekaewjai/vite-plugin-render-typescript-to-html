@@ -1,0 +1,13 @@
+# directory
+node_modules/
+
+# file
+.DS_Store
+.env
+.env.production
+.eslintcache
+*.tsbuildinfo
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
