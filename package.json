@@ -9,8 +9,10 @@
   "main": "./src/index.js",
   "types": "./src/types.ts",
   "exports": {
-    ".": "./src/index.js",
-    "./types": "./src/types.ts",
+    ".": {
+      "import": "./src/index.js",
+      "types": "./src/types.ts"
+    },
     "./package.json": "./package.json"
   },
   "devDependencies": {
