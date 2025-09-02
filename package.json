@@ -4,14 +4,14 @@
   "version": "0.0.2",
   "files": [
     "src/index.js",
-    "src/types.ts"
+    "src/index.d.ts"
   ],
   "main": "./src/index.js",
-  "types": "./src/types.ts",
+  "types": "./src/index.d.ts",
   "exports": {
     ".": {
       "default": "./src/index.js",
-      "types": "./src/types.ts"
+      "types": "./src/index.d.ts"
     },
     "./package.json": "./package.json"
   },
