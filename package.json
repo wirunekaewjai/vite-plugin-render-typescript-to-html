@@ -10,7 +10,7 @@
   "types": "./src/types.ts",
   "exports": {
     ".": {
-      "import": "./src/index.js",
+      "default": "./src/index.js",
       "types": "./src/types.ts"
     },
     "./package.json": "./package.json"
